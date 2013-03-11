@@ -115,13 +115,24 @@ echo
 
 echo "(Press enter to summarise transactions with Impala)"
 read
-echo ------------------------------------
-echo Summarising transactions with Impala
-echo ------------------------------------
+echo -------------------------------------------------------
+echo Summarising transactions with Impala (without order by)
+echo -------------------------------------------------------
 echo 
 echo "select sender, sum(amount) as amount from transactions group by sender limit 10"
 echo
 time impala-shell -i localhost:21000 -q "select sender, sum(amount) as amount from transactions group by sender limit 10"
+echo
+
+echo "(Press enter to summarise transactions with Impala)"
+read
+echo ----------------------------------------------------
+echo Summarising transactions with Impala (with order by)
+echo ----------------------------------------------------
+echo 
+echo "select sender, sum(amount) as amount from transactions group by sender order by amount desc limit 10"
+echo
+time impala-shell -i localhost:21000 -q "select sender, sum(amount) as amount from transactions group by sender order by amount desc limit 10"
 echo
 
 echo "(Press enter to see which accounts have gained the most with Hive)"
