@@ -29,9 +29,9 @@ echo ------------------------
 echo Creating tables with Hive
 echo ------------------------
 echo
-echo hive -e "CREATE EXTERNAL TABLE transactions (sender STRING, recipient STRING, time INT, amount INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/user/paul/transactions'"
+echo hive -e "CREATE EXTERNAL TABLE transactions (sender STRING, recipient STRING, time INT, amount INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/user/$USER/transactions'"
 echo
-hive -e "CREATE EXTERNAL TABLE transactions (sender STRING, recipient STRING, time INT, amount INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/user/paul/transactions'"
+hive -e "CREATE EXTERNAL TABLE transactions (sender STRING, recipient STRING, time INT, amount INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/user/$USER/transactions'"
 #hive -e "CREATE TABLE summary_hive (sender STRING, amount INT)"
 #hive -e "CREATE TABLE summary_impala (sender STRING, amount INT)"
 time impala-shell -i localhost:21000 -q "refresh"
